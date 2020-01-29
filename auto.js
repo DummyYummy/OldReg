@@ -1,6 +1,7 @@
 var Client = require('instagram-private-api').V1,
          _ = require('underscore'),
-PhoneLib = require('./onlineSimRequest');
+  PhoneLib = require('./phoneLib'),
+      User = require('./user');
 
 
 createNew();
@@ -11,21 +12,9 @@ async function createNew(user, pass) {
     var device = new Client.Device('Iphone');
     var storage = new Client.CookieFileStorage('./cookies/test.json');
     var session = new Client.Session(device, storage);
-    var phone = await PhoneLib.getNewPhone();
-    var b = 1;
-    // new Client.AccountEmailCreator(session)
-	// .setEmail('NagliyHeralsdf8231@hotmail.com')
-	// .setUsername('NagliyHelrasdf82')
-	// .setPassword('Adfklafirwu1414')
-	// .setName('Nagliy')
-	// .register()
-	// .spread(function(account, discover) {
-	// 	// account instanceof Client.Account
-	// 	console.log("Created Account", account)
-	// 	console.log("Discovery Feed", discover);
-	// }).catch(function(err){
-    //     var a = 1;
-    // })
+    //var phone = await PhoneLib.getNewPhone();
+    var phone = '';
+    var user = User.getRandomUser();
     new Client.AccountPhoneCreator(session)
         .setPhone(phone)
         .setUsername('BaristaNahKovachwer4')
